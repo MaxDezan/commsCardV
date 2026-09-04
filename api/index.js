@@ -66,12 +66,12 @@ const criarTransporter = () => {
 };
 
 // 1. Endpoint GET /api/comissoes - Retorna todas as opções de comissões
-app.get('/api/comissoes', (req, res) => {
+app.get(['/api/comissoes', '/comissoes'], (req, res) => {
   res.json(comissoes);
 });
 
 // 2. Endpoint POST /api/pedidos - Processa novo pedido e envia e-mail de notificação
-app.post('/api/pedidos', async (req, res) => {
+app.post(['/api/pedidos', '/pedidos'], async (req, res) => {
   try {
     const { cliente, base, bases, categoria, adicionais = [], personagensAdicionais = [], observacoes = '' } = req.body;
     const isMulti = Array.isArray(bases) && bases.length > 0;
